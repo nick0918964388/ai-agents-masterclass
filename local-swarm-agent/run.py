@@ -4,9 +4,10 @@ from swarm import Swarm
 import json
 
 from sql_agents import sql_router_agent
+from sql_agents_db2 import sql_router_agent_db2
 
 ollama_client = OpenAI(
-    base_url="http://localhost:11434/v1",        
+    base_url="http://ollama.webtw.xyz:11434/v1",        
     api_key="ollama"            
 )
 
@@ -93,4 +94,4 @@ def run_demo_loop(
         agent = response.agent
 
 if __name__ == "__main__":
-    run_demo_loop(sql_router_agent)
+    run_demo_loop(sql_router_agent_db2)
