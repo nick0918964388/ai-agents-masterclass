@@ -114,28 +114,28 @@ sql_router_agent_db2 = Agent(
 )
 
 data_agent_1 = Agent(
-    name="車輛與設備",
+    name="車輛與設備基本資料代理",
     instructions=get_sql_agent_instructions() + 
-    "\n\n負責處理與[車輛與設備]相關基本資料的數據查詢。",
+    "\n\n負責處理與[車輛與設備]相關基本資料的數據查詢，查詢車輛基本資料，車輛維修機廠，車輛維修機務段代號，車輛車種代號，車輛車型代號。",
     functions=[run_sql_select_statement],
     model=model
 )
 
 data_agent_2 = Agent(
-    name="故障通報",
+    name="故障通報代理",
     instructions=get_sql_agent_instructions() + 
-    "\n\n負責處理與[故障通報]相關的數據查詢。",
+    "\n\n負責處理與[故障通報]相關的數據查詢，查詢故障通報ID，故障通報類型，故障通報描述，故障通報狀態，故障通報狀態日期，故障通報通報優先權，故障通報內部優先權，故障通報影響，故障通報急迫性，故障通報通報人員，故障通報通報日期，故障通報受影響人員，故障通報受影響日期，故障通報來源，故障通報主管，故障通報擁有者，故障通報擁有者群組，故障通報是否為全域，故障通報是否與全域相關，故障通報全域故障通報編號，故障通報全域故障通報類型，故障通報外部記錄編號，故障通報現場訪視，故障通報原始記錄編號，故障通報原始記錄類型。",
     functions=[run_sql_select_statement],
     model=model
 )
 
-# data_agent_3 = Agent(
-#     name="數據代理3",
-#     instructions=get_sql_agent_instructions() + 
-#     "\n\n負責處理與[具體業務領域3]相關的數據分析。",
-#     functions=[run_sql_select_statement],
-#     model=model
-# )
+data_agent_3 = Agent(
+    name="分析代理",
+    instructions=get_sql_agent_instructions() + 
+    "\n\n負責處理與[車輛與設備基本資料代理與故障通報代理]相關的數據分析。",
+    functions=[run_sql_select_statement],
+    model=model
+)
 
 
 def transfer_back_to_router_agent():
