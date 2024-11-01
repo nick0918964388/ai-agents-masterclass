@@ -39,7 +39,7 @@ except Exception as e:
 
 
 # 读取第二个数据库的表结构
-with open("db2-tables.sql", "r") as table_schema_file:
+with open("ai-news-complete-tables.sql", "r") as table_schema_file:
     table_schemas = table_schema_file.read()
 
 
