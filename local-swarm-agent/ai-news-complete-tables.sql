@@ -1,5 +1,5 @@
 -- 建立車輛/設備的基本資料表
-CREATE TABLE "MAXIMO  "."ASSET"  (
+CREATE TABLE "ASSET"  (
                   "ASSETNUM" VARGRAPHIC(25 CODEUNITS16) NOT NULL , -- 車輛/設備編號
                   "PARENT" VARGRAPHIC(25 CODEUNITS16) , -- 父車輛/設備編號
                   "SERIALNUM" VARGRAPHIC(64 CODEUNITS16) , -- 車輛/設備序號
@@ -34,13 +34,11 @@ CREATE TABLE "MAXIMO  "."ASSET"  (
                   "EQ7" VARGRAPHIC(20 CODEUNITS16) , -- 車輛/車輛狀態
                   "EQ8" VARGRAPHIC(12 CODEUNITS16) , -- 車輛/車輛位置
                   "EQ9" VARGRAPHIC(10 CODEUNITS16) , -- 車輛/車輛、車組或設備的區分(單一車輛車號或車組或設備)
- )
-                 IN "MAXDATA" INDEX IN "MAXINDEX"
-                 ORGANIZE BY ROW;
+ );
 
 
 -- 故障通報/車輛進廠維修/設備工具進廠維修的交易資料檔案
-CREATE TABLE "MAXIMO  "."TICKET"  (
+CREATE TABLE "TICKET"  (
                   "TICKETID" VARGRAPHIC(12 CODEUNITS16) NOT NULL , --主要的Key
                   "CLASS" VARGRAPHIC(16 CODEUNITS16) NOT NULL , -- 區隔"車輛故障"、"車輛進廠維修"、"設備工具進廠維修"三種不同交易資料類型
                   "DESCRIPTION" VARGRAPHIC(100 CODEUNITS16) ,  -- 描述
@@ -66,9 +64,7 @@ CREATE TABLE "MAXIMO  "."TICKET"  (
                   "SITEVISIT" INTEGER NOT NULL , -- 現場訪視
                   "ORIGRECORDID" VARGRAPHIC(10 CODEUNITS16) ,
                   "ORIGRECORDCLASS" VARGRAPHIC(16 CODEUNITS16)
-                    )
-                    IN "MAXDATA" INDEX IN "MAXINDEX"
-                 ORGANIZE BY ROW;
+                    );
 
 
 
