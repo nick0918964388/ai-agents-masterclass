@@ -157,12 +157,12 @@ def transfer_to_data_agent_2():
 
 sql_router_agent_db2.functions = [
     transfer_to_data_agent_1,
-    # transfer_to_data_agent_2,
+    transfer_to_data_agent_2,
     # transfer_to_data_agent_3
 ]
 
 data_agent_1.functions.append(transfer_back_to_router_agent)
-# data_agent_2.functions.append(transfer_back_to_router_agent)
+data_agent_2.functions.append(transfer_back_to_router_agent)
 # data_agent_3.functions.append(transfer_back_to_router_agent)
 
 
