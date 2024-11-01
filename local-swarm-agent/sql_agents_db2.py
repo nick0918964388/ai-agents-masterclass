@@ -130,7 +130,7 @@ abnormal_report_agent = Agent(
 )
 
 invbalances_agent = Agent(
-    name="庫存代理",
+    name="材料庫存代理",
     instructions=get_sql_agent_instructions() + 
     "\n\n負責處理與[庫存數量/庫存內容/庫存位置]相關的數據查詢代理。",
     functions=[run_sql_select_statement],
@@ -143,22 +143,22 @@ def transfer_back_to_router_agent():
     return sql_router_agent_db2
 
 
-def transfer_to_data_agent_1():
+def transfer_to_car_base_info_agent():
     return car_base_info_agent
 
 
-def transfer_to_data_agent_2():
+def transfer_to_abnormal_report_agent():
     return abnormal_report_agent
 
 
-def transfer_to_data_agent_3():
+def transfer_to_invbalances_agent():
     return invbalances_agent
 
 
 sql_router_agent_db2.functions = [
-    transfer_to_data_agent_1,
-    transfer_to_data_agent_2,
-    transfer_to_data_agent_3
+    transfer_to_car_base_info_agent,
+    transfer_to_abnormal_report_agent,
+    transfer_to_invbalances_agent
 ]
 
 car_base_info_agent.functions.append(transfer_back_to_router_agent)
