@@ -106,40 +106,40 @@ def get_sql_agent_instructions():
     """
 
 
-sql_router_agent = Agent(
+sql_router_agent_db2 = Agent(
     name="路由代理",
     instructions=get_sql_router_agent_instructions(),
     model="qwen2.5:3b"
 )
 
 data_agent_1 = Agent(
-    name="數據代理1",
+    name="車輛與設備",
     instructions=get_sql_agent_instructions() + 
-    "\n\n負責處理與[具體業務領域1]相關的數據查詢。",
+    "\n\n負責處理與[車輛與設備]相關的數據查詢。",
     functions=[run_sql_select_statement],
     model=model
 )
 
 data_agent_2 = Agent(
-    name="數據代理2",
+    name="故障通報",
     instructions=get_sql_agent_instructions() + 
-    "\n\n負責處理與[具體業務領域2]相關的數據查詢。",
+    "\n\n負責處理與[故障通報]相關的數據查詢。",
     functions=[run_sql_select_statement],
     model=model
 )
 
-data_agent_3 = Agent(
-    name="數據代理3",
-    instructions=get_sql_agent_instructions() + 
-    "\n\n負責處理與[具體業務領域3]相關的數據分析。",
-    functions=[run_sql_select_statement],
-    model=model
-)
+# data_agent_3 = Agent(
+#     name="數據代理3",
+#     instructions=get_sql_agent_instructions() + 
+#     "\n\n負責處理與[具體業務領域3]相關的數據分析。",
+#     functions=[run_sql_select_statement],
+#     model=model
+# )
 
 
 def transfer_back_to_router_agent():
     """當用戶詢問當前代理無法處理的數據時調用此函數"""
-    return sql_router_agent
+    return sql_router_agent_db2
 
 
 def transfer_to_data_agent_1():
@@ -150,19 +150,19 @@ def transfer_to_data_agent_2():
     return data_agent_2
 
 
-def transfer_to_data_agent_3():
-    return data_agent_3
+# def transfer_to_data_agent_3():
+#     return data_agent_3
 
 
-sql_router_agent.functions = [
+sql_router_agent_db2.functions = [
     transfer_to_data_agent_1,
     transfer_to_data_agent_2,
-    transfer_to_data_agent_3
+    # transfer_to_data_agent_3
 ]
 
 data_agent_1.functions.append(transfer_back_to_router_agent)
 data_agent_2.functions.append(transfer_back_to_router_agent)
-data_agent_3.functions.append(transfer_back_to_router_agent)
+# data_agent_3.functions.append(transfer_back_to_router_agent)
 
 
 def cleanup():
