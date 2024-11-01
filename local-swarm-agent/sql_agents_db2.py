@@ -104,6 +104,7 @@ def get_sql_agent_instructions():
     請確保你的SQL SELECT語句100%符合DB2語法和這些架構。
     你要隨時準備創建和執行SQL語句來回答用戶的問題。
     """
+    print(get_sql_agent_instructions())
 
 
 sql_router_agent_db2 = Agent(
@@ -115,7 +116,7 @@ sql_router_agent_db2 = Agent(
 data_agent_1 = Agent(
     name="車輛與設備",
     instructions=get_sql_agent_instructions() + 
-    "\n\n負責處理與[車輛與設備]相關的數據查詢。",
+    "\n\n負責處理與[車輛與設備]相關基本資料的數據查詢。",
     functions=[run_sql_select_statement],
     model=model
 )
