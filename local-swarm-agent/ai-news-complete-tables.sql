@@ -42,6 +42,18 @@ CREATE TABLE "TICKET"  (
                   "ORIGRECORDCLASS" VARGRAPHIC(16 CODEUNITS16) WITH COMMENT '原始記錄類型' -- 原始記錄類型
                     );
 
+-- 庫存查詢
+CREATE TABLE "INVBALANCES"  (
+                  "INBALANCEID" VARGRAPHIC(12 CODEUNITS16) NOT NULL WITH COMMENT '主要的Key', --主要的Key
+                  "ITEMNUM" VARGRAPHIC(12 CODEUNITS16) NOT NULL WITH COMMENT '料件編號', --項目編號
+                  "CONDITIONCODE" VARGRAPHIC(10 CODEUNITS16) NOT NULL WITH COMMENT '料性', --條件碼
+                  "BINNUM" VARGRAPHIC(10 CODEUNITS16) NOT NULL WITH COMMENT '櫃位編號', --倉庫編號
+                  "CURBAL" INTEGER NOT NULL WITH COMMENT '庫存數量', --庫存數量
+                  "LOCATION" VARGRAPHIC(10 CODEUNITS16) NOT NULL WITH COMMENT '倉庫位置', --倉庫位置
+                  "CHANGEDATE" TIMESTAMP NOT NULL WITH COMMENT '變更日期', --變更日期
+                  "CHANGEBY" VARGRAPHIC(30 CODEUNITS16) NOT NULL WITH COMMENT '變更人員', --變更人員
+                    );
+
 
 
 

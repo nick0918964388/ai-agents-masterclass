@@ -129,10 +129,10 @@ abnormal_report_agent = Agent(
     model=model
 )
 
-data_analysis_agent = Agent(
-    name="分析代理",
+invbalances_agent = Agent(
+    name="庫存代理",
     instructions=get_sql_agent_instructions() + 
-    "\n\n負責處理與[車輛與設備基本資料代理與故障通報代理]相關的數據分析。",
+    "\n\n負責處理與[庫存數量/庫存內容/庫存位置]相關的數據查詢代理。",
     functions=[run_sql_select_statement],
     model=model
 )
@@ -152,7 +152,7 @@ def transfer_to_data_agent_2():
 
 
 def transfer_to_data_agent_3():
-    return data_analysis_agent
+    return invbalances_agent
 
 
 sql_router_agent_db2.functions = [
@@ -163,7 +163,7 @@ sql_router_agent_db2.functions = [
 
 car_base_info_agent.functions.append(transfer_back_to_router_agent)
 abnormal_report_agent.functions.append(transfer_back_to_router_agent)
-data_analysis_agent.functions.append(transfer_back_to_router_agent)
+invbalances_agent.functions.append(transfer_back_to_router_agent)
 
 
 def cleanup():
