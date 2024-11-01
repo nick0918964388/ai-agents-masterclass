@@ -38,6 +38,7 @@ CREATE TABLE "TICKET"  (
                   "EXTERNALRECID" VARGRAPHIC(20 CODEUNITS16) WITH COMMENT '外部記錄編號', -- 外部記錄編號
                   "SITEVISIT" INTEGER NOT NULL WITH COMMENT '現場訪視', -- 現場訪視
                   "ORIGRECORDID" VARGRAPHIC(10 CODEUNITS16) WITH COMMENT '原始記錄編號', -- 原始記錄編號
+                  "ASSETNUM" VARGRAPHIC(25 CODEUNITS16) WITH COMMENT '車號', -- 車號
                   "ORIGRECORDCLASS" VARGRAPHIC(16 CODEUNITS16) WITH COMMENT '原始記錄類型' -- 原始記錄類型
                     );
 
